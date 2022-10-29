@@ -1,0 +1,130 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{blindtext}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{bigdelim}
+\usepackage{colortbl}
+\usepackage{fancyhdr} 
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{color}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{tikzmark}
+\pagestyle{fancy} 
+	\fancyhf{} 
+	\fancyhead[L]{\includegraphics[scale=0.05]{Bilder/dhbw.png}} 
+	\fancyhead[C]{\slshape Formale Sprachen und Automaten} 
+	\fancyhead[R]{\slshape LaTeX Version}
+	\fancyfoot[C]{\thepage}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{Formale Sprachen und Automaten}
+\author{\slshape Robin Rausch}
+\date{\slshape \today}
+\begin{document}
+\pagenumbering{Roman}
+\maketitle
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\section{Grundlagen}
+\subsection{Alphabet}
+Ein Alphabet $\varSigma$ ist eine nicht-leere Menge von Symbolen(Zeichen, Buchstaben).
+Beispiel: $\varSigma_{ab} = { a, b }$
+
+\subsection{Wort}
+Ein Wort $w$ über dem Alphabet $\varSigma$(Sigma) ist eine endliche Folge von Symbolen aus $\varSigma$. Das Wort $w = abaabab$ wurde beispielsweise aus dem Alphabet $\varSigma_{ab}$ gebildet.\newline
+Die Länge eines Wortes kann durch Betragsstriche angegeben werden. Beispiel: $|w| = 7$\newline
+Ebenso kann man die Anzahl bestimmter Symbole in einem Wort bestimmen: $|w|_b = 3$\newline
+Ein einzelnes Zeichen kann durch eckige Klammern angegeben werden: $w[2] = b$\newline
+Wörter können bliebig konkateniert werden(hintereinanderschreiben ohne abstand): $w_1w_2 = abbabaab$ mit $w_1 = abba$ und $w_2 = baab$.\newline
+Wörter dürfen auch potenziert werden: $w^3 = abaabababaabababaabab = www$\newline
+Das leere Wort lautet $\epsilon$.
+
+\subsection{Formale Sprachen}
+Eine formale Sprache $L$ über einem Alphabet $\varSigma$ ist eine Menge von Wörtern aus $\varSigma^*: L \subseteq \varSigma^*$. Eine Sprache kann sowohl endlich als auch unendlich sein.\newline
+Beispiel: $L_1 = \{w \in \varSigma_{bin}^* |$ $|w| \geqslant 2 \wedge w[|w| - 1] = 1\}$ ist die Menge aller Binärwörter, an deren vorletzter Stelle 1 steht.\newline
+Das Produkt zweier formaler Sprachen: $L_1 \cdot L_2 = \{abac, abcb, bcac, bccb\}$ mit $L_1 = \{ab, bc\}$ und $L_2 = \{ ac, cb\}$.\newline
+Sprachen können ebenfalls potenziert werden: $L^2 = \{ab, ba\} \cdot \{ab, ba\} = \{ abab, abba, baab, baba\}$
+
+\subsection{Kleene Stern}
+Für ein Alphabet $\varSigma$ und eine formale Sprache $L \subseteq \varSigma^*$ ist der Operator Kleene Stern wie folgt definiert: $L^* = \underset{n \in \mathbb{N}}{\bigcup} L^n$.\newline \newline
+Beispiel: Sei $L_1 = \{ ab, ba\}$, dann $L^* = \{\epsilon, ab, ba, abab, abba, baab, baba, ababab, ...\}$.
+
+\section{Reguläre Sprachen und endliche Ausdrücke}
+\subsection{Reguläre Ausdrücke}
+Ein regulärer Ausdruck über $\varSigma$ beschreibt eine formale Sprache.\newline
+Die Menge aller regulären Ausdrücke über $\varSigma$ ist eine formale Sprache.\newline\newline
+Beispiel: Sprache aller Wörter über $\varSigma_{abc}$, die nur aus genau zwei Symbolen bestehen:\newline
+Ausdruck: $r_1 = (a + b + c)(a + b + c)$\newline
+Sprache: $\mathcal{L}(r_1) = \{ w \in \varSigma_{abc}^*$ | $|w| = 2\}$\newpage
+\noindent Operatoren:
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/RegulaereAusdruecke_Operatoren.PNG}
+	\end{figure}
+\end{center}
+Nicht alle Operatoren sind für alle Typen zulässig:
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/Zulaessige_Operatoren.PNG}
+	\end{figure}
+\end{center}
+
+\subsection{Endliche Automaten}
+Endliche Automaten sind eine andere Darstellung einer regulären Sprache. Endliche Ausdrücke lassen sich in Reguläre Ausdrücke umformen. Genauso auch anders herum.\newline
+Endliche Automaten lassen sich sowohl deterministisch als auch nicht-deterministisch darstellen.
+
+\subsubsection{Deterministische endliche Automaten(DEA)}
+Ein DEA hat endlich viele Zustände. Jeder mögliche Übergang muss hierbei behandelt werden können. D.h. für das Alphabet $\varSigma_{ab}$ muss von jedem Zustand sowohl ein $a$, als auch ein $b$ Übergang gegeben sein. Der Automat beginnt im Startzustand und muss im Endzustand enden. Wenn der Automat sich in einem Nicht-Endzustand befindet, befindet sich das Wort nicht in der Sprache, welche vom Automaten abgebildet wird.\newpage
+\noindent Der DEA lässt sich durch folgendes 5-Tupel darstellen:\newline
+$\mathcal{A} = (Q, \varSigma, \delta, q_0, F)$ mit den Komponenten:\newline
+$Q$ ist eine endliche Menge von Zuständen\newline
+$\varSigma$ ist ein endliches Alphabet\newline
+$\delta: Q \times \varSigma \rightarrow Q$ ist die Übergangsfunktion\newline
+$q_0 \in Q$ ist der Startzustand\newline
+$F \subseteq Q$ ist die Menge der Endzustände\newline
+\newline
+Beispiel:\newline
+\begin{center}
+	\begin{figure}[!h]
+		\includegraphics[width=\textwidth]{Bilder/DEA_Beispiel.PNG}
+	\end{figure}
+\end{center}
+
+\subsubsection{Nicht-deterministische endliche Automaten(NEA)}
+
+\subsubsection{Endliche Automaten und reguläre Ausdrücke}
+
+\subsubsection{Minimierung}
+
+\subsection{Nicht-reguläre Sprachen und das Pumping-Lemma}
+
+\subsection{Eigenschaften regulärer Sprachen}
+
+\section{Chomsky Grammatiken und kontextfreie Sprachen}
+
+\section{Turing Maschine}
+
+\section{Entscheidbarkeit}
+
+\section{Berechenbarkeit}
+
+\section{Komplexität}
+
+\end{document}
