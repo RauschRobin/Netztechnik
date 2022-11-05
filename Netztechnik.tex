@@ -74,7 +74,10 @@
 					\item[Designated-Port] Zu Switch mit besserer Priorität oder höherer MAC-Adresse als die eigene
 					\item[Blocking-Port] Zu Switches, welche weniger bevorzugt sind als sie selbst 
 				\end{description}
-				
+				In Untenstehender Skizze ist Switch B die Root-Switch und alle Ports, die zu ihr führen, sind Root-Ports.\\
+				Da die restlichen Switche die gleiche Priorität haben, wird die höchste MAC-Adresse bevorzugt. \\
+				Dadurch sind die Ports zu Switch A die Blocking-Ports und die von D zu A und C ebenfalls. \\
+				Ports an Root-Switch sind alle designated.\\
 				\includegraphics[scale=0.5]{Bilder/RouterVermascht.png}
 
 	\section{Kabel}
@@ -98,7 +101,7 @@
 			\textbf{Idee:} Häufige Zeichen kurze Bit-Codierung, sodass Binär-Codierung möglichst kurz ist.
 			\begin{enumerate}
 				\item \textbf{Tabelle} mit vorkommenden Zeichen und deren Häuffigkeit erstellen
-				\item \textbf{Binärbaum} mit Zeichen erstellen \hfill
+				\item \textbf{Binärbaum} mit Zeichen erstellen. Zeichen nach Häufigkeit sortiert. Zeichen mit geringster Häufigkeit zusammenfassen. Zusammengefasste zeichen weiter vereinen bis Baum vollständig ist\\
 				\includegraphics[scale=0.4]{Bilder/Huffmann-Baum.png}
 				\item \textbf{Codierung} der Zeichen aus Binärbaum lesen und in Tabelle schreiben
 			\end{enumerate}
