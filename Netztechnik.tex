@@ -64,10 +64,18 @@
 
 		\subsection{Subnetting}
 
-		\subsection{Routing}
+		\subsection{Switch}
 			\subsubsection{Spanning Tree}
-				Router haben Hierarchie beim Weiterleiten von Paketen:\\
-				Niedrige Priorität \& Hohe MAC-Adresse wird bevorzugt.
+				Switche haben Hierarchie beim Weiterleiten von Paketen. Kleine Priorität ist besser. Falls Priorität gleich, entscheidet höhere MAC-Adresse die bevorzugte Switch\\
+				Switche geben Pakete nur an Switche mit geringerer Priorität oder höherer MAC-Adresse weiter. Beste Switch in der Vernetzung wird zum Root.\\
+				Es gibt dabei 3 Arten von Ports an den Switches:
+				\begin{description}
+					\item[Root-Port] Zur Root-Switch
+					\item[Designated-Port] Zu Switch mit besserer Priorität oder höherer MAC-Adresse als die eigene
+					\item[Blocking-Port] Zu Switches, welche weniger bevorzugt sind als sie selbst 
+				\end{description}
+				
+				\includegraphics[scale=0.5]{Bilder/RouterVermascht.png}
 
 	\section{Kabel}
 
