@@ -65,6 +65,39 @@
 			\includegraphics[scale=.75]{Bilder/OSI-Modell2} %aus Abi-Lernzettel kopiert
 
 		\subsection{Protokolle (+Zuordnung)}
+			\subsubsection{Layer 1: Physical Layer - Bitübertragungsschicht}
+				Diese Schicht beschreibt die physische Übertragung der Daten. Zusammenfassend geht es hierbei hauptsächlich um Kabel und Sender/Empfänger. \textcolor{red}{??}
+
+			\subsubsection{Layer 2: Data Link Layer - Sicherungsschicht}
+				Hier wird der Ethernet Frame zusammengebaut und NIC und MAC-Adressen verwendet. Die MAC-Adresse fällt deshalb auch unter die Schicht 2 und wird später genauer erklärt. \textcolor{red}{??}
+
+			\subsubsection{Layer 3: Network-Layer - Vermittlungsschicht}
+				Die Schicht 3 beschreibt das Routing in einem Netzwerk. Darunter fallen beispielsweise Switches. \textcolor{red}{??}
+
+			\subsubsection{Layer 4: Transport Layer - Transportschicht}
+				Layer 4 stellt eine transparente Datenübertragung zwischen Endsystemen zur Verfügung. Darunter fallen beispielsweise TCP und UDP:\newline\newline
+				Bei TCP wird vor dem Datentransport eine Verbindung zwischen den Parteien aufgebaut und während des gesamten Datenaustausches gehalten. Nach Abschluss des Datenflusses wird die Verbindung wieder abgebaut. Verwendet werden hierbei Timer, Wiederholungen, FLusskontrolle, Windowing/Stop and Wait und Multiplexing um eine Verbindung mehrfach nutzen zu können.\newline\newline
+				Bei UDP werden die Daten in das Netzwerk in Richtung Empfänger gesendet, ohne dass der Sender weiß, ob der Empfänger empfangsbereit ist. Damit sind die oben aufgeführten Mechanismen, wie Flusskontrolle und Wiederholungen in den überlagerten Schichten zu bearbeiten.
+
+			\subsubsection{Layer 5: Session Layer - Sitzungsschicht}
+				Diese Schicht ist die erste anwendungsorientierte Schicht und behandelt Sitzungsabläufe und Synchronisationspunkte. Wenn ein Fehler auftritt, kann auf diese Synchronisationspunkte aufgesetzt werden. Ebenso fallen die Betriebsarten(Simplex, Half-Duplex und Full-Duplex) und Phasen(Verbindungsaufbau, Datenübertragung und Verbindungsaufbau) unter diese Schicht. \textcolor{red}{??}
+
+			\subsubsection{Layer 6: Presentation Layer - Darstellungsschicht}
+				Unterschiedliche Rechner haben aufgrund unterschiedlicher Betriebssysteme unterschiedliche Darstellungsformen der Daten. Soll eine Applikation auf unterschiedlichen Betriebssystemen ablaufen können, sind Konvertierungen durchzuführen.
+				Hier werden folgende Umsetzungen abgewickelt:\newline
+				Zeichensätze (ASCII, EBCDIC), Interpretation von Bytes MSB (Most Significant Bit)/LSB (Least Significant Bit), Kompression/Dekompression und Verschlüsselung/Entschlüsselung
+
+			\subsubsection{Layer 7: Application Layer - Anwendungsschicht}
+			Diese Schicht bildet die Schnittstelle zum Anwender (User). Beispiel hierfür sind:\newline
+			FTP File Transfer Protocol, SMTP Simple Mail Transfer Protocol, SNMP Simple Network Management Protocol und DNS Domain Name Service
+
+	\section{MAC-Adresse}
+	Die MAC-Adresse gehört zur OSI Schicht 2 und besteht aus 48bit welche in 4 Teile eingeteilt werden:
+	\begin{center}
+		\begin{figure}
+			\includegraphics[width=\textwidth]{Bilder/MAC-Adresse.PNG}
+		\end{figure}
+	\end{center}
 
 	\section{Netze}
 		\subsection{Netzwerk-Topologien}
