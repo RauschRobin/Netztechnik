@@ -105,6 +105,30 @@
 		\end{tabularx}
 	\end{center}
 
+	\section{Kabel}
+		\subsection{Verkehrsarten}
+			\includegraphics[width=\textwidth]{Bilder/Verkehrsarten.PNG}
+
+		\subsection{Betriebsarten}
+			\begin{center}
+				\begin{figure}[!h]
+					\includegraphics[scale=1]{Bilder/Duplexarten.PNG}
+				\end{figure}
+			\end{center}
+
+		\subsection{Kabelarten:}
+		\begin{description}
+			\item[Twisted-Pair] Verdrillte Paare, um geringes Nebensprechen mit hoher Übertragbarkeit zu erreichen.
+			\item[LWL] Lichtwellenleiter/Glasfaserkabel hohe Geschwindigkeit, teuer, Aufwand in Spannung zurückzuwandeln.
+		\end{description}
+
+		\subsection{Verkablungsarten:}
+		\begin{description}
+			\item[Primarverkabelung: ] Für Verkabelung von Gebäuden mit LWL
+			\item[Sekundärverkabelung: ] Für Verkabelung von Etagen mit LWL
+			\item[Tertiärverkabelung: ] Für Verkabelung innerhalb einer Etage mit Kupferkabel
+		\end{description}
+
 	\section{Netze}
 		\subsection{Netzwerk-Topologien}
 
@@ -136,47 +160,7 @@
 				Ports an Root-Switch sind alle designated.\\
 				\includegraphics[width=\textwidth]{Bilder/RouterVermascht.png}
 
-	\section{Kabel}
-		\subsection{Verkehrsarten}
-			\includegraphics[width=\textwidth]{Bilder/Verkehrsarten.PNG}
-
-		\subsection{Betriebsarten}
-			\begin{center}
-				\begin{figure}[!h]
-					\includegraphics[scale=1]{Bilder/Duplexarten.PNG}
-				\end{figure}
-			\end{center}
-
-		\subsection{Kabelarten:}
-		\begin{description}
-			\item[Twisted-Pair] Verdrillte Paare, um geringes Nebensprechen mit hoher Übertragbarkeit zu erreichen.
-			\item[LWL] Lichtwellenleiter/Glasfaserkabel hohe Geschwindigkeit, teuer, Aufwand in Spannung zurückzuwandeln.
-		\end{description}
-
-		\subsection{Verkablungsarten:}
-		\begin{description}
-			\item[Primarverkabelung: ] Für Verkabelung von Gebäuden mit LWL
-			\item[Sekundärverkabelung: ] Für Verkabelung von Etagen mit LWL
-			\item[Tertiärverkabelung: ] Für Verkabelung innerhalb einer Etage mit Kupferkabel
-		\end{description}
-
-	\section{Codierung}
-		\subsection{Huffmann-Codierung}
-			Algorithmus zum \textbf{Komprimieren} von Dateien.\\
-			\textbf{Idee:} Häufige Zeichen kurze Bit-Codierung, sodass Binär-Codierung möglichst kurz ist.
-			\begin{enumerate}
-				\item \textbf{Tabelle} mit vorkommenden Zeichen und deren Häuffigkeit erstellen
-				\item \textbf{Binärbaum} mit Zeichen erstellen. Zeichen nach Häufigkeit sortiert. Zeichen mit geringster Häufigkeit zusammenfassen. Zusammengefasste zeichen weiter vereinen bis Baum vollständig ist
-				\item \textbf{Codierung} der Zeichen aus Binärbaum lesen und in Tabelle schreiben
-			\end{enumerate}
-			\begin{center}
-				\begin{figure}[!h]
-					\includegraphics[width=\textwidth]{Bilder/Huffmann-Baum.png}
-				\end{figure}
-			\end{center}
-
-	\section{Netze}
-		\subsubsection{Netz Topologien}
+		\subsection{Netz Topologien}
 			\begin{minipage}[t]{.48\textwidth}
 				\begin{flushleft}
 					\textbf{Baum Topologie}\newline\newline
@@ -769,5 +753,21 @@
 					verbessertes Multicast& \\
 					\hline
 				\end{tabularx}
-			\end{table}    
+			\end{table}   
+			
+	\section{Codierung}
+		\subsection{Huffmann-Codierung}
+			Algorithmus zum \textbf{Komprimieren} von Dateien.\\
+			\textbf{Idee:} Häufige Zeichen kurze Bit-Codierung, sodass Binär-Codierung möglichst kurz ist.
+			\begin{enumerate}
+				\item \textbf{Tabelle} mit vorkommenden Zeichen und deren Häuffigkeit erstellen
+				\item \textbf{Binärbaum} mit Zeichen erstellen. Zeichen nach Häufigkeit sortiert. Zeichen mit geringster Häufigkeit zusammenfassen. Zusammengefasste zeichen weiter vereinen bis Baum vollständig ist
+				\item \textbf{Codierung} der Zeichen aus Binärbaum lesen und in Tabelle schreiben
+			\end{enumerate}
+			\begin{center}
+				\begin{figure}[!h]
+					\includegraphics[width=\textwidth]{Bilder/Huffmann-Baum.png}
+				\end{figure}
+			\end{center}
+
 \end{document}
