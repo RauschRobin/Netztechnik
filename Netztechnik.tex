@@ -128,10 +128,36 @@
 			\item[Sekundärverkabelung: ] Für Verkabelung von Etagen mit LWL
 			\item[Tertiärverkabelung: ] Für Verkabelung innerhalb einer Etage mit Kupferkabel
 		\end{description}
+	
+		\subsection{Informationskapazität}
+		\begin{center}
+			\begin{figure}[!h]
+				\includegraphics[width=\textwidth]{Bilder/Informationskapazitaet.png}
+			\end{figure}
+		\end{center}
+		\begin{description}
+			\item[Kanal-Bandbreite: ] Die Kanalbandbreite eines drahtlosen Signals bestimmt die Datenrate dieses Signals. Je höher die Kanalbandbreite, desto schneller ist die Verbindung. Die Verwendung einer Kanalbandbreite von160 MHz ist eines der Hauptmerkmale des neuen WLAN-Standards Wi-Fi 6.
+			\item[Kanal-Dynamic: ] \textcolor{red}{Keine Ahnung?}
+		\end{description}
+
+		\subsection{Leitungstheorie}
+			Um Leitungen vor elektromagnetischer Strahlung zu schützen, werden diese verdrillt. Je enger diese verdrillt werden, desto langsamer wird die Leitung(da der Weg länger wird).
+			\begin{center}
+				\begin{figure}[!h]
+					\includegraphics[width=\textwidth]{Bilder/verdrillte-kabel.PNG}
+					Split Pairs \hspace{0.4\textwidth} Richtige Verdrahtung
+				\end{figure}
+			\end{center}
+		
+
+	\section{Satelliten}
+	\begin{center}
+		\begin{figure}[!h]
+			\includegraphics[width=\textwidth]{Bilder/Satelliten.png}
+		\end{figure}
+	\end{center}
 
 	\section{Netze}
-		\subsection{Netzwerk-Topologien}
-
 		\subsection{Netzwerk-Technologien}
 			\begin{description}
 				\item[Repeater] Verstärkt Eingangssignal auf Ausgang, OSI-Schicht 1
@@ -141,8 +167,6 @@
 				\item[Router] Verbindet Netze, arbeitet mit IP-Adressen, OSI-Schicht 3
 				\item[Gateway] Verbindet Netze, arbeitet auf allen OSI-Schichten, Protokollunabhängig 
 			\end{description}
-
-		\subsection{Subnetting}
 
 		\subsection{Switch}
 			\subsubsection{Spanning Tree}
@@ -530,11 +554,32 @@
 			\begin{center}
 				Zahlenwert im Feld = Bytegröße des Feldes.
 			\end{center}
+
+		\subsection{Ethernet-Synchronisation}
+			Um das Signal bei einer Übertragung zu synchronisieren wird vor jedem Ethernetframe eine Präambel und ein SFD(Start Frame Delimiter) gepackt. Die Präambel lautet \textit{1010101010...} für 7 Byte und der SFD ist 1 Byte groß: \textit{10101011}.
 		
+	\section{Zugriffsverfahren}
+		Bei geteilten Medium wird ein Zugriffsverfahren benötigt(außer Switch). Folgende Zugriffsverfahren stehen zur Auswahl:
+		
+		\subsection{ALOHA}
+			\begin{center}
+				\includegraphics[width=0.6\textwidth]{Bilder/aloha.png}
+			\end{center}
+
+		\subsection{CSMA}
+			\begin{center}
+				\includegraphics[width=\textwidth]{Bilder/csma.PNG}
+			\end{center}
+
+		\subsection{CSMA/CA}
+			\begin{center}
+				\includegraphics[width=\textwidth]{Bilder/csmaca.PNG}
+			\end{center}
+
 		\subsection{CSMA/CD - Verfahren}
 			Programmablaufplan des CSMA/CD Verfahrens:
 			\begin{center}
-				\includegraphics[scale=0.3]{Bilder/CSMACD.png}
+				\includegraphics[width=0.6\textwidth]{Bilder/CSMACD.png}
 			\end{center}
 		
 		\subsubsection{Kollision}
@@ -587,9 +632,11 @@
 				k = 0 bis $2^{i}$-1 \hspace{2cm} i = Anzahl Versuche
 			\end{center}
 			Nach 10 Versuchen wird i nicht mehr erhöht, nach 16 erfolglosen Versuchen wird der Sendeversuch abgebrochen.
-		
+
+		\subsection{Token Ring}
+			Bei Token Ring wird ein sog. Token im Kreis gelassen. An diesen heftet jeder Client seine Nachrichten an und und liest die für ihn vorgesehene Nachrichten. Der Token durchläuft hierbei die Staten \textit{frei}, \textit{belegt} und \textit{gelesen}. Somit wird der Token erst wieder freigegeben, wenn der Sender die Rückmeldung gelesen erhalten. \textcolor{red}{Wenn der Token nicht gelesen wurde und der Sender die Nachricht ungelesen zurück bekommt, wird dieser dann wieder frei? @flo und @ozan}
 			
-		\section{Netzwerkprotokolle}%Hier gerne noch andere Protokolle :)
+	\section{Netzwerkprotokolle}%Hier gerne noch andere Protokolle :)
 			Hat die Netzwerkkarte einen Datenrahmen empfangen, muss ermittelt werden, welches Protokoll zur Weiterverarbeitung verwendet werden soll. Innerhalb des Datenrahmens muss also der Typ und das Ziel der Daten festgelegt sein. Diese Informationen stehen in einem 2Byte großem Typenfeld. Für jedes Protokoll existiert eine eigene Kennung:
 			\begin{center}
 				\renewcommand{\arraystretch}{1.5}
@@ -769,5 +816,33 @@
 					\includegraphics[width=\textwidth]{Bilder/Huffmann-Baum.png}
 				\end{figure}
 			\end{center}
+
+		\subsection{Channel Coding}
+			\begin{minipage}[c]{0.4\textwidth}
+				\subsubsection{Fehlererkennung mit Paritätsbits}
+				\includegraphics[width=\textwidth]{Bilder/paritaetsbit.png}
+			\end{minipage}
+			\begin{minipage}[c]{0.6\textwidth}
+				\subsubsection{Fehlererkennung mit Hamming Distanz}
+				\includegraphics[width=\textwidth]{Bilder/hamming-distanz.PNG}
+			\end{minipage}
+			\subsubsection{Fehlererkennung mit 2-dimensionaler Parität}
+				\includegraphics[width=\textwidth]{Bilder/2-dim-paritaet.PNG}
+			\subsubsection{Fehlererkennung mit CRC(Cyclic Redundancy Check)}
+				\includegraphics[width=\textwidth]{Bilder/crc1.PNG}
+				Übliche CRC-Generatorpolynome sind:
+				\begin{center}
+					\begin{tabularx}{9cm}{X|l}
+						\textbf{CRC}& \textbf{C(x) Generatorpolynom}\\
+						\hline
+						CRC-8& $X^8 + X^2 + X^1 + 1$\\
+						CRC-10& $X^{10} + X^9 + X^5 + X^4 + X + 1$\\
+						CRC-12& $X^{12} + X^{11} + X^3 + X^2 + 1$\\
+						CRC-16& $X^{16} + X^{15} + X^2 + 1$\\
+						CRC-CCITT& $X^{16} + X^{15} + X^5 + 1$\\
+					\end{tabularx}
+				\end{center}
+			
+
 
 \end{document}
