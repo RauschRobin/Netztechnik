@@ -72,11 +72,11 @@
 				Hier wird der Ethernet Frame zusammengebaut und NIC und MAC-Adressen verwendet. Die MAC-Adresse fällt deshalb auch unter die Schicht 2 und wird später genauer erklärt. \textcolor{red}{??}
 
 			\subsubsection{Layer 3: Network-Layer - Vermittlungsschicht}
-				Die Schicht 3 beschreibt das Routing in einem Netzwerk. Darunter fallen beispielsweise Switches. \textcolor{red}{??}
+				In der 3. Schicht werden Verbindungen zu Hostsystemen (auch außerhalb des Netzes) aufgebaut. Darunter fallen beispielsweise Router.
 
 			\subsubsection{Layer 4: Transport Layer - Transportschicht}
 				Layer 4 stellt eine transparente Datenübertragung zwischen Endsystemen zur Verfügung. Darunter fallen beispielsweise TCP und UDP:\newline\newline
-				Bei TCP wird vor dem Datentransport eine Verbindung zwischen den Parteien aufgebaut und während des gesamten Datenaustausches gehalten. Nach Abschluss des Datenflusses wird die Verbindung wieder abgebaut. Verwendet werden hierbei Timer, Wiederholungen, FLusskontrolle, Windowing/Stop and Wait und Multiplexing um eine Verbindung mehrfach nutzen zu können.\newline\newline
+				Bei TCP wird vor dem Datentransport eine Verbindung zwischen den Parteien aufgebaut und während des gesamten Datenaustausches gehalten. Nach Abschluss des Datenflusses wird die Verbindung wieder abgebaut. Verwendet werden hierbei Timer, Wiederholungen, Flusskontrolle, Windowing/Stop and Wait und Multiplexing um eine Verbindung mehrfach nutzen zu können.\newline\newline
 				Bei UDP werden die Daten in das Netzwerk in Richtung Empfänger gesendet, ohne dass der Sender weiß, ob der Empfänger empfangsbereit ist. Damit sind die oben aufgeführten Mechanismen, wie Flusskontrolle und Wiederholungen in den überlagerten Schichten zu bearbeiten.
 
 			\subsubsection{Layer 5: Session Layer - Sitzungsschicht}
@@ -118,8 +118,17 @@
 
 		\subsection{Kabelarten:}
 		\begin{description}
-			\item[Twisted-Pair] Verdrillte Paare, um geringes Nebensprechen mit hoher Übertragbarkeit zu erreichen.
-			\item[LWL] Lichtwellenleiter/Glasfaserkabel hohe Geschwindigkeit, teuer, Aufwand in Spannung zurückzuwandeln.
+			\item[Twisted-Pair: ] Verdrillte Paare, um geringes Nebensprechen mit hoher Übertragbarkeit zu erreichen.
+			\item[LWL: ] Lichtwellenleiter/Glasfaserkabel hohe Geschwindigkeit, teuer, Aufwand in Spannung zurückzuwandeln.  
+		\end{description}
+
+		\subsection{Ethernet-Standards}
+		\begin{description}
+			\item[10BaseT: ] 10 Mbit/s Twisted-Pair Kabel mit 100m Reichweite
+			\item[10BaseF: ] 10 Mbit/s LWL (Fiber) mit 2000m Reichweite 
+			\item[100BaseTX: ] 100 Mbit/s Twisted-Pair Kabel, durch Vollduplex-Übertragung
+			\item[100BaseFX: ]  100 Mbit/s LWL, durch Vollduplex-Übertragung
+			\item[RJ-45-Buchsen: ] Port für Netzwerkkarte mit 8 Pins
 		\end{description}
 
 		\subsection{Verkablungsarten:}
