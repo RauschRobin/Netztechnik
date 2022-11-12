@@ -66,10 +66,10 @@
 
 		\subsection{Schichten}
 			\subsubsection{Layer 1: Physical Layer - Bitübertragungsschicht}
-				Diese Schicht beschreibt die physische Übertragung der Daten. Zusammenfassend geht es hierbei hauptsächlich um Kabel und Sender/Empfänger. \textcolor{red}{??}
+				Diese Schicht beschreibt die physische Übertragung der Daten. Zusammenfassend geht es hierbei hauptsächlich um Kabel und Sender/Empfänger.
 
 			\subsubsection{Layer 2: Data Link Layer - Sicherungsschicht}
-				Hier wird der Ethernet Frame zusammengebaut und NIC und MAC-Adressen verwendet. Die MAC-Adresse fällt deshalb auch unter die Schicht 2 und wird später genauer erklärt. \textcolor{red}{??}
+				Hier wird der Ethernet Frame zusammengebaut und NIC und MAC-Adressen verwendet. Die MAC-Adresse fällt deshalb auch unter die Schicht 2 und wird später genauer erklärt.
 
 			\subsubsection{Layer 3: Network-Layer - Vermittlungsschicht}
 				In der 3. Schicht werden Verbindungen zu Hostsystemen (auch außerhalb des Netzes) aufgebaut. Darunter fallen beispielsweise Router.
@@ -80,7 +80,7 @@
 				Bei UDP werden die Daten in das Netzwerk in Richtung Empfänger gesendet, ohne dass der Sender weiß, ob der Empfänger empfangsbereit ist. Damit sind die oben aufgeführten Mechanismen, wie Flusskontrolle und Wiederholungen in den überlagerten Schichten zu bearbeiten.
 
 			\subsubsection{Layer 5: Session Layer - Sitzungsschicht}
-				Diese Schicht ist die erste anwendungsorientierte Schicht und behandelt Sitzungsabläufe und Synchronisationspunkte. Wenn ein Fehler auftritt, kann auf diese Synchronisationspunkte aufgesetzt werden. Ebenso fallen die Betriebsarten(Simplex, Half-Duplex und Full-Duplex) und Phasen(Verbindungsaufbau, Datenübertragung und Verbindungsaufbau) unter diese Schicht. \textcolor{red}{??}
+				Diese Schicht ist die erste anwendungsorientierte Schicht und behandelt Sitzungsabläufe und Synchronisationspunkte. Wenn ein Fehler auftritt, kann auf diese Synchronisationspunkte aufgesetzt werden. Ebenso fallen die Betriebsarten(Simplex, Half-Duplex und Full-Duplex) und Phasen(Verbindungsaufbau, Datenübertragung und Verbindungsaufbau) unter diese Schicht.
 
 			\subsubsection{Layer 6: Presentation Layer - Darstellungsschicht}
 				Unterschiedliche Rechner haben aufgrund unterschiedlicher Betriebssysteme unterschiedliche Darstellungsformen der Daten. Soll eine Applikation auf unterschiedlichen Betriebssystemen ablaufen können, sind Konvertierungen durchzuführen.
@@ -99,13 +99,8 @@
 				\includegraphics[width=\textwidth]{Bilder/MAC-Adresse.PNG}
 			\end{figure}
 		\end{center}
-		\textcolor{red}{Wenn die MAC an erster Stelle eine 1 stehen hat, hat das welche Bedeutung???? Wenn an der zweiten Stelle der MAC-Adresse eine 1 steht, ist diese eine Broadcast oder Multicast Befehl. $\rightarrow$?}
-		\begin{center}
-			\includegraphics[scale=1]{Bilder/MAC.png}
-			\begin{tabularx}{14cm}{XX}
-				3 Byte OUI (Herstellerkennung)&3Byte Gerät-Seriennummer
-			\end{tabularx}
-		\end{center}
+		Wenn an der ersten Stelle der MAC-Adresse eine 1 steht, ist die MAC eine Broadcast oder Multicast Adresse.
+		Wenn an der zweiten Stelle der MAC-Adresse eine 1 steht, ist die MAC eine mit Software administrierte Adresse und nicht unbedingt universell einzigartig.
 
 	\section{Kabel}
 		\subsection{Verkehrsarten}
@@ -160,7 +155,7 @@
 		\includegraphics[width=\textwidth]{Bilder/Informationskapazitaet.png}
 		\begin{description}
 			\item[Kanal-Bandbreite: ] Die Kanalbandbreite eines drahtlosen Signals bestimmt die Datenrate dieses Signals. Je höher die Kanalbandbreite, desto schneller ist die Verbindung. Die Verwendung einer Kanalbandbreite von160 MHz ist eines der Hauptmerkmale des neuen WLAN-Standards Wi-Fi 6.
-			\item[Kanal-Dynamic: ] \textcolor{red}{Keine Ahnung?}
+			\item[Kanal-Dynamic: ] \textcolor{red}{Keine Ahnung? Wenn jemand weiß $\rightarrow$ bei Robin melden}
 		\end{description}
 		
 		\subsection{Alien-Crosstalk}
@@ -744,9 +739,9 @@
 			Nach 10 Versuchen wird i nicht mehr erhöht, nach 16 erfolglosen Versuchen wird der Sendeversuch abgebrochen.
 
 		\subsection{Token Ring}
-			Bei Token Ring wird ein sog. Token im Kreis gelassen. An diesen heftet jeder Client seine Nachrichten an und und liest die für ihn vorgesehene Nachrichten. Der Token durchläuft hierbei die Staten \textit{frei}, \textit{belegt} und \textit{gelesen}. Somit wird der Token erst wieder freigegeben, wenn der Sender die Rückmeldung gelesen erhalten. \textcolor{red}{Wenn der Token nicht gelesen wurde und der Sender die Nachricht ungelesen zurück bekommt, wird dieser dann wieder frei? @flo und @ozan}
+			Bei Token Ring wird ein sog. Token im Kreis gelassen. An diesen heftet jeder Client seine Nachrichten an und und liest die für ihn vorgesehene Nachrichten. Der Token durchläuft hierbei die Staten \textit{frei}, \textit{belegt} und \textit{gelesen}. Somit wird der Token erst wieder freigegeben, wenn der Sender die Rückmeldung gelesen erhalten. Wenn der Token nicht gelesen wurde und der Sender die Nachricht ungelesen zurück bekommt, setzt dieser den Token wieder frei.
 			
-	\section{Netzwerkprotokolle}%Hier gerne noch andere Protokolle :)
+	\section{Netzwerkprotokolle}
 			Hat die Netzwerkkarte einen Datenrahmen empfangen, muss ermittelt werden, welches Protokoll zur Weiterverarbeitung verwendet werden soll. Innerhalb des Datenrahmens muss also der Typ und das Ziel der Daten festgelegt sein. Diese Informationen stehen in einem 2Byte großem Typenfeld. Für jedes Protokoll existiert eine eigene Kennung:
 			\begin{center}
 				\renewcommand{\arraystretch}{1.5}
