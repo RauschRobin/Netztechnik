@@ -64,7 +64,7 @@
 			\end{minipage}
 			\includegraphics[scale=.75]{Bilder/OSI-Modell2} %aus Abi-Lernzettel kopiert
 
-		\subsection{Protokolle (+Zuordnung)}
+		\subsection{Schichten}
 			\subsubsection{Layer 1: Physical Layer - Bitübertragungsschicht}
 				Diese Schicht beschreibt die physische Übertragung der Daten. Zusammenfassend geht es hierbei hauptsächlich um Kabel und Sender/Empfänger. \textcolor{red}{??}
 
@@ -90,20 +90,22 @@
 			\subsubsection{Layer 7: Application Layer - Anwendungsschicht}
 			Diese Schicht bildet die Schnittstelle zum Anwender (User). Beispiel hierfür sind:\newline
 			FTP File Transfer Protocol, SMTP Simple Mail Transfer Protocol, SNMP Simple Network Management Protocol und DNS Domain Name Service
-
+	
+	\newpage
 	\section{MAC-Adresse}
-	Um Informationen im Ether / Internet zuverlässig und zielgenau verschicken zu können, muss jedes Endgerät im Netz seine eigene individuelle Kennung besitzen!\newline $\longrightarrow$ \emph{MAC Adresse}\newline Die MAC Adresse ist in den ROM der Network Interface Card eines jeden Gerätes eingebrannt. Die MAC ist also keine virtuelle Softwarekennung, sondern eine durchaus physisch mit dem Gerät verbundene Kennnummer. Die MAC-Adresse gehört zur OSI Schicht 2 und besteht aus 48bit welche in 4 Teile eingeteilt werden:
-	\begin{center}
-		\begin{figure}
-			\includegraphics[width=\textwidth]{Bilder/MAC-Adresse.PNG}
-		\end{figure}
-	\end{center}
-	\begin{center}
-		\includegraphics[scale=1]{Bilder/MAC.png}
-		\begin{tabularx}{14cm}{XX}
-			3 Byte OUI (Herstellerkennung)&3Byte Gerät-Seriennummer
-		\end{tabularx}
-	\end{center}
+		Um Informationen im Ether / Internet zuverlässig und zielgenau verschicken zu können, muss jedes Endgerät im Netz seine eigene individuelle Kennung besitzen!\newline $\longrightarrow$ \emph{MAC Adresse}\newline Die MAC Adresse ist in den ROM der Network Interface Card eines jeden Gerätes eingebrannt. Die MAC ist also keine virtuelle Softwarekennung, sondern eine durchaus physisch mit dem Gerät verbundene Kennnummer. Die MAC-Adresse gehört zur OSI Schicht 2 und besteht aus 48bit welche in 4 Teile eingeteilt werden:
+		\begin{center}
+			\begin{figure}[!h]
+				\includegraphics[width=\textwidth]{Bilder/MAC-Adresse.PNG}
+			\end{figure}
+		\end{center}
+		\textcolor{red}{Wenn die MAC an erster Stelle eine 1 stehen hat, hat das welche Bedeutung???? Wenn an der zweiten Stelle der MAC-Adresse eine 1 steht, ist diese eine Broadcast oder Multicast Befehl. $\rightarrow$?}
+		\begin{center}
+			\includegraphics[scale=1]{Bilder/MAC.png}
+			\begin{tabularx}{14cm}{XX}
+				3 Byte OUI (Herstellerkennung)&3Byte Gerät-Seriennummer
+			\end{tabularx}
+		\end{center}
 
 	\section{Kabel}
 		\subsection{Verkehrsarten}
@@ -119,7 +121,7 @@
 		\subsection{Kabelarten:}
 		\begin{description}
 			\item[Twisted-Pair: ] Verdrillte Paare, um geringes Nebensprechen mit hoher Übertragbarkeit zu erreichen.
-			\item[LWL: ] Lichtwellenleiter/Glasfaserkabel hohe Geschwindigkeit, teuer, Aufwand in Spannung zurückzuwandeln.  
+			\item[LWL: ] Lichtwellenleiter/Glasfaserkabel hohe Geschwindigkeit, teuer, Aufwand in Spannung zurückzuwandeln. Je dünner der Faserkern (im Vergleich zum Fasermantel), desto besser ist das Ausgangssignal
 		\end{description}
 
 		\subsection{Ethernet-Standards}
@@ -137,17 +139,32 @@
 			\item[Sekundärverkabelung: ] Für Verkabelung von Etagen mit LWL
 			\item[Tertiärverkabelung: ] Für Verkabelung innerhalb einer Etage mit Kupferkabel
 		\end{description}
+
+		\subsection{Vorteile Glasfaser statt Kupfer}
+		\begin{itemize}
+			\item Lichtwellenleiter können beliebig mit anderen Versorgungsleitungen parallel verlegt werden. Es wirken keine elektromagnetischen Störeinflüsse.
+			\item Wegen der optischen Übertragung existieren keine elektrischen Potentialprobleme.
+			\item Entfernungsbedingte Verluste durch Induktivitäten, Kapazitäten und Widerständen treten nicht auf.
+			\item Nahezu Frequenz-unabhängige Leitungsdämpfung der Signale.
+			\item Übertragungsraten sind durch mehrere Trägerwellen mit unterschiedlichen Wellenlängen (Farbspektrum) fast unbegrenzt erhöhbar.
+			\item Lichtwellenleiter haben eine erheblich geringere Dämpfung und eignen sich somit für weite Strecken.
+		\end{itemize}
+
+		\subsection{Nachteile Glasfaser statt Kupfer}
+		\begin{itemize}
+			\item Teurer als Kupfer
+			\item Lichtimpulse lassen sich nicht zwischenspeichern. Wegen fehlender optischer Signalspeicher und Verarbeitungselementen muss eine aufwendige optisch/elektrisch und elektrisch/optische Signalumwandlung statt finden.
+		\end{itemize}
 	
 		\subsection{Informationskapazität}
-		\begin{center}
-			\begin{figure}[!h]
-				\includegraphics[width=\textwidth]{Bilder/Informationskapazitaet.png}
-			\end{figure}
-		\end{center}
+		\includegraphics[width=\textwidth]{Bilder/Informationskapazitaet.png}
 		\begin{description}
 			\item[Kanal-Bandbreite: ] Die Kanalbandbreite eines drahtlosen Signals bestimmt die Datenrate dieses Signals. Je höher die Kanalbandbreite, desto schneller ist die Verbindung. Die Verwendung einer Kanalbandbreite von160 MHz ist eines der Hauptmerkmale des neuen WLAN-Standards Wi-Fi 6.
 			\item[Kanal-Dynamic: ] \textcolor{red}{Keine Ahnung?}
 		\end{description}
+		
+		\subsection{Alien-Crosstalk}
+			Alien Crosstalk (AXT) ist elektromagnetisches Rauschen, das in signalführenden Kabeln vorkommt, die parallel zu einem oder mehreren anderen Kabeln verlaufen.
 
 		\subsection{Leitungstheorie}
 			Um Leitungen vor elektromagnetischer Strahlung zu schützen, werden diese verdrillt. Je enger diese verdrillt werden, desto langsamer wird die Leitung(da der Weg länger wird).
@@ -157,7 +174,6 @@
 					Split Pairs \hspace{0.4\textwidth} Richtige Verdrahtung
 				\end{figure}
 			\end{center}
-		
 
 	\section{Satelliten}
 	\begin{center}
@@ -199,15 +215,13 @@
 					\textbf{Baum Topologie}\newline\newline
 					\begin{tikzpicture}[scale=0.8]
 						\draw (-0.5,-0.5)rectangle(0.5,0.5);
-						\draw (-3.5,-1.5)rectangle(-2.5,-0.5);
 						\draw (2.5,-2.5)rectangle(3.5,-1.5);
 						\draw (-3.5,-4.5)rectangle(-2.5,-3.5);
-						\draw (-0.5,-5.5)rectangle(0.5,-4.5);
+						\draw (-0.5,-3.5)rectangle(0.5,-4.5);
 						\draw (2.5,-3.5)rectangle(3.5,-4.5);
-						\draw[red] (-2.5,-1)--(-0.5,0);
 						\draw[red] (-2.5,-4)--(0,-0.5);
 						\draw[red] (2.5,-2)--(0,-0.5);
-						\draw[red] (3,-2.5)--(0.5,-5);
+						\draw[red] (3,-2.5)--(0.5,-4);
 						\draw[red] (3,-2.5)--(3,-3.5);
 					\end{tikzpicture}\newline
 					\footnotesize Vorteile:
@@ -308,12 +322,64 @@
 					\footnotesize
 					\item simpler Aufbau
 					\item leichte Skalierbarkeit
+				\end{itemize}
+				\footnotesize Nachteile:
+				\begin{itemize}
+					\footnotesize
+					\item Unterbrechung des Rings\newline $\longrightarrow$ Totalausfall
+				\end{itemize}
+			\end{minipage}
+			
+			\begin{minipage}[t]{.48\textwidth}
+				\begin{flushleft}
+					\textbf{Vermascht}\newline
+					\begin{center}
+						\begin{tikzpicture}[scale=0.8]
+							\draw (-2.5,-2.5)rectangle(-1.5,-1.5);
+							\draw (-2.5,2.5)rectangle(-1.5,1.5);
+							\draw (2.5,-2.5)rectangle(1.5,-1.5);
+							\draw (2.5,2.5)rectangle(1.5,1.5);
+							\draw[red] (-1.5,-1.5)--(1.5,1.5);
+							\draw[red] (-1.5,1.5)--(1.5,1.5);
+							\draw[red] (1.5,-1.5)--(1.5,1.5);
+							\draw[red] (-1.5,-1.5)--(-1.5,1.5);
+							\draw[red] (-1.5,-1.5)--(1.5,-1.5);
+							\draw[red] (-1.5,1.5)--(1.5,-1.5);
+						\end{tikzpicture}
+					\end{center}
+					\footnotesize Vorteile:
+					\begin{itemize}
+						\footnotesize
+						\item Bei Ausfall einer Komponente ist egal
+						\item schneller Zugriff
 					\end{itemize}
 					\footnotesize Nachteile:
 					\begin{itemize}
 						\footnotesize
-						\item Unterbrechung des Rings\newline $\longrightarrow$ Totalausfall
-						\end{itemize}
+						\item Viele Verbindungen $\longrightarrow$ teuer und aufwendig
+					\end{itemize}
+				\end{flushleft}
+			\end{minipage}
+			\begin{minipage}[t]{.48\textwidth}
+				\textbf{Zelle}
+				\begin{flushright}
+					\begin{center}
+						\includegraphics[scale=0.85]{Bilder/Zelle-topologie.png}
+					\end{center}
+				\end{flushright}
+				\footnotesize Vorteile:
+				\begin{itemize}
+					\footnotesize
+					\item sehr effiziente Kosten-Nutzen verteilung
+					\item leichte Skalierbarkeit
+				\end{itemize}
+				\footnotesize Nachteile:
+				\begin{itemize}
+					\footnotesize
+					\item Interferenzen
+					\item Bei Ausfall einer Zelle ist halt doof für die in der Zelle
+					\item Zwischen Zellen ist auch doof/ineffizient
+				\end{itemize}
 			\end{minipage}
 		
 		\subsubsection{Netze in Unternehmen}
@@ -321,6 +387,9 @@
 		
 		\subsubsection{Private Netze}
 			Besitzt ein Haushalt einen Home Server mit Internetanbindung, so ist es Privatpersonen möglich, von nahezu überall auf der Welt auf ihre persönlichen Daten zugreifen zu können. Diese Option steht Privatpersonen außerdem durch Cloud Services zur Verfügung. Nachteil: Die Daten werden externen Firmen zur Verfügung gestellt, diese Option ist mit Vorsicht zu genießen. Privatpersonen können durch das Internet außerdem auf, generell betrachtet, Online Services zugreifen (Online Banking, Online Shopping). Die Kommunikation wird auch für Privatpersonen erheblich erleichtert. Durch Chat, Voice Chat oder sogar Video Chat Anwendungen ist die Kommunikation nahezu an jedem Ort der Erde möglich. Auch das Unterhaltungsprogramm profitiert vom Internet. Dienste wie YouTube oder Netflix wären ohne das Internet undenkbar.
+
+		\subsubsection{Logische und Physikalische Netze}
+			\includegraphics[width=\textwidth]{Bilder/Logische-und-physikalische-netze.png}
 		
 		\subsection{Servermodelle}
 		\begin{table}[h]
@@ -373,57 +442,83 @@
 		
 		\subsubsection{Repeater}
 			Der Repeater hat jeweils einen Eingang und einen Ausgang. Er verstärkt Signale durch regenerieren/synchronisieren des Taktes. Dazu arbeitet er auf Bitebene und verursacht eine kleine Latenz.
-				\begin{center}
-					\begin{tikzpicture}
-						\draw[black](-1.4, -1) rectangle (1.4,1);
-						\draw [<->, black, very thick](-1,0) to(1,0);
-					\end{tikzpicture}
-				\end{center}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[black](-1.4, -1) rectangle (1.4,1);
+					\draw [<->, black, very thick](-1,0) to(1,0);
+				\end{tikzpicture}
+			\end{center}
+			\begin{itemize}
+				\item Es können nur sehr wenige Repeater in folge geschalten werden
+				\item Es gibt keine Begrenzung von Kollisionsdomänen $\rightarrow$ Kollisionen werden einfach weitergeleitet
+				\item Repeater können verwendet werden um Längenbegrenzungen einzuführen oder um die Anzahl von Teilnehmern in einem Netz zu erhöhen
+				\item gehört zur OSI Schicht 1
+			\end{itemize}
 		
 		\subsubsection{HUB}
 		Der HUB ist ein Multiport Repeater. D.h. er hat mehrere Ein- und Ausgänge und arbeitet auch auf Bitebene.
-				\begin{center}
-					\begin{tikzpicture}
-						\draw[black](-1.4, -1) rectangle (1.4,1);
-						\draw [<->, black, very thick](-1,0) to(1,0);
-					\end{tikzpicture}
-				\end{center}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[black](-1.4, -1) rectangle (1.4,1);
+					\draw [<->, black, very thick](-1,0) to(1,0);
+				\end{tikzpicture}
+			\end{center}
 		
 		\subsubsection{Bridge}
-			Die Bridge fungiert als Brücke zwischen zwei LAN-Netzwerken. Sie kennt die relevanten MAC-Adressen in beiden Netzen und verbindet so die Netze miteinander.
-				\begin{center}
-					\begin{tikzpicture}
-						\draw[black](-1.4, -1) rectangle (1.4,1);
-						\draw [->, black, very thick](-1,0.2) to(-0.2,0.2);
-						\draw [->, black, very thick](-1,-0.4) to(-0.2,-0.4);
-						\draw [->, black, very thick](1,0.4) to(0.2,0.4);
-						\draw [->, black, very thick](1,-0.2) to(0.2,-0.2);
-					\end{tikzpicture}
-				\end{center}
+			Die Bridgefungiert als Brücke zwischen zwei LAN-Netzwerken. Sie kennt die relevanten MAC-Adressen in beiden Netzen und verbindet so die Netze miteinander.
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[black](-1.4, -1) rectangle (1.4,1);
+					\draw [->, black, very thick](-1,0.2) to(-0.2,0.2);
+					\draw [->, black, very thick](-1,-0.4) to(-0.2,-0.4);
+					\draw [->, black, very thick](1,0.4) to(0.2,0.4);
+					\draw [->, black, very thick](1,-0.2) to(0.2,-0.2);
+				\end{tikzpicture}
+			\end{center}
+			\begin{itemize}
+				\item Bridges begrenzen eine Kollisionsdomäne, da sie die Kollisionen abfangen
+				\item Prüft bei jedem Frame die Ziel-MAC und schaut in eigener Tabelle nach ob die MAC im Netz vorhanden ist, aus dem der Frame kam. Falls dies der Fall ist wird der Frame verworfen. Andernfalls prüft die Bridge mithilfe der Tabelle an welchen Port/in welches Netz der Frame weitergeleitet werden soll
+				\item gehört zur OSI Schicht 2 (da Bridge mit MAC Adressen arbeitet)
+				\item In einem Netz dürfen maximal 7 Bridges verbaut sein
+				\item Bridges werden bei Längenbegrenzungen, Anzahl der Teilnehmer erhöhen, Ausbreitung fehlerhafter Packete vermeiden, Kollisionen begrenzen und Verringerung der Netzlast eingesetzt
+			\end{itemize}
 		
 		\subsubsection{Switch}
 			Der Switch ist eine Multiport-Bridge. D.h. er hat mehrere Ein- und Ausgänge und verbindet so mehrere Netzwerke miteinander. Er verwendet Filtertabellen um den schnellsten Weg für Signale zu finden. Er arbeitet ebenso mit MAC-Adressen.
-				\begin{center}
-					\begin{tikzpicture}
-						\draw[black](-1.4, -1) rectangle (1.4,1);
-						\draw [->, black, very thick](-1,0.2) to(-0.2,0.2);
-						\draw [->, black, very thick](-1,-0.4) to(-0.2,-0.4);
-						\draw [->, black, very thick](1,0.4) to(0.2,0.4);
-						\draw [->, black, very thick](1,-0.2) to(0.2,-0.2);
-					\end{tikzpicture}
-				\end{center}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[black](-1.4, -1) rectangle (1.4,1);
+					\draw [->, black, very thick](-1,0.2) to(-0.2,0.2);
+					\draw [->, black, very thick](-1,-0.4) to(-0.2,-0.4);
+					\draw [->, black, very thick](1,0.4) to(0.2,0.4);
+					\draw [->, black, very thick](1,-0.2) to(0.2,-0.2);
+				\end{tikzpicture}
+			\end{center}
+			\begin{itemize}
+				\item Der Switch kann Store \& Foreward betreiben. D.h. er untersucht und speichert Frames bevor er sie weiterleitet. Dadurch können fehlerhafte Frames direkt aussortiert werden. Dadurch leidet jedoch die Leistung.
+				\item Oder der Switch betreibt Cut Through, wobei er einfach die Frames an die Zieladresse weiterleitet ohne den Frame zu prüfen.
+				\item Oder der Switch betreibt Cut Through Collision Free. D.h. Frames werden nur auf die ersten 64 Byte untersucht, falls bis dahin kein Fehler auftritt, wird dieser weitergeleitet.
+				\item Kollisionen bleiben auf ein Netzwerk-Segment begrenzt. Dadurch werden Kollisionsdomänen gebildet.
+			\end{itemize}
 		
 		\subsubsection{Router}
 			Der Router verbindet Netzwerke indem er Datenpackete weiterleitet oder blockiert. Er arbeitet mit IP-Adressen und wird oft auch als intelligenter Switch bezeichnet. Der Router wird für das gesamte Netz verwendet.
-				\begin{center}
-					\begin{tikzpicture}
-						\draw[black, very thick](0, 0) circle (1.6);
-						\draw [->, black, very thick, line width=1mm](-1,1) to(-0.2,0.2);
-						\draw [->, black, very thick, line width=1mm](1,-1) to(0.2,-0.2);
-						\draw [->, black, very thick, line width=1mm](0.2, 0.2) to(1,1);
-						\draw [->, black, very thick, line width=1mm](-0.2,-0.2) to(-1,-1);
-					\end{tikzpicture}
-				\end{center}
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[black, very thick](0, 0) circle (1.6);
+					\draw [->, black, very thick, line width=1mm](-1,1) to(-0.2,0.2);
+					\draw [->, black, very thick, line width=1mm](1,-1) to(0.2,-0.2);
+					\draw [->, black, very thick, line width=1mm](0.2, 0.2) to(1,1);
+					\draw [->, black, very thick, line width=1mm](-0.2,-0.2) to(-1,-1);
+				\end{tikzpicture}
+			\end{center}
+			\begin{itemize}
+				\item gehören zur OSI Schicht 3
+				\item Verbinden zwei separate Netzwerke miteinander
+				\item Broadcasts werden auf Ebene 2 behandelt und Kollisionen auf Ebene 1
+				\item Router begrenzen somit Broadcast- und Kollisionsdomänen
+				\item Router haben für jedes Netz eine andere Subnetmaske, IP-Adresse und sogar MAC-Adresse
+			\end{itemize}
 		
 		\subsubsection{Einordnung der Komponenten ins OSI-Modell}
 			Die Netzwerkkomponenten lassen sich in die Schichten 1 bis 4 einordnen. Die Schicht 1 beinhaltet alle Kabel(Kupferkabel, Ethernetkabel, Glasfaserkabel) und den Repeater. Zu Schicht 2 gehören Switches und Bridges. In Schicht 3 ist der Router und in Schicht 4 handelt es sich um die Netzwerkkarte und die Ports.
@@ -444,6 +539,7 @@
 					\end{tabularx}
 			\end{center}
 		
+		\newpage
 		\subsection{Round Trip Delay Time - RTDT}
 			Die Paketumlaufzeit bzw. Round Trip Time gibt die Zeit an, die ein Datenpaket in einem Rechnernetz benötigt, um von der weitesten entfernten Quelle zum Ziel und zurück zu reisen. Es handelt sich also um die Summe aus Laufzeit von Punkt A nach Punkt B und der Laufzeit von Punkt B nach Punkt A.
 				\begin{center}
@@ -566,6 +662,10 @@
 
 		\subsection{Ethernet-Synchronisation}
 			Um das Signal bei einer Übertragung zu synchronisieren wird vor jedem Ethernetframe eine Präambel und ein SFD(Start Frame Delimiter) gepackt. Die Präambel lautet \textit{1010101010...} für 7 Byte und der SFD ist 1 Byte groß: \textit{10101011}.
+
+		\subsection{Power over Ethernet}
+			Bei PoE werden netzwerkfähige Geräte über das achtadrige Ethernet-Kabel mit Strom versorgt.\newline 
+			Hauptvorteil von PoE ist, dass man ein Stromversorgungskabel einsparen kann und so auch an schwer zugänglichen Stellen oder in Bereichen, in denen viele Kabel stören würden, Ethernet-angebundene Geräte installieren kann. Die Stromversorgung zum Gerät muss nicht separat mit einem Stromkabel und Netzgerät zugeführt oder mit einer Batterie gelöst werden. Das Gerät bezieht die Energie stattdessen über das Datennetz. Dazu muss – meist an zentraler Stelle, im Netzwerkverteiler – neben den Datensignalen zusätzlich Strom in die Datenleitung eingespeist werden. Somit lassen sich einerseits zum Teil Installationskosten einsparen, andererseits kann der damit einfach zu realisierende Einsatz einer zentralen unterbrechungsfreien Stromversorgung (USV) die Ausfallsicherheit der angeschlossenen Geräte erhöhen.
 		
 	\section{Zugriffsverfahren}
 		Bei geteilten Medium wird ein Zugriffsverfahren benötigt(außer Switch). Folgende Zugriffsverfahren stehen zur Auswahl:
@@ -585,6 +685,7 @@
 				\includegraphics[width=\textwidth]{Bilder/csmaca.PNG}
 			\end{center}
 
+		\newpage
 		\subsection{CSMA/CD - Verfahren}
 			Programmablaufplan des CSMA/CD Verfahrens:
 			\begin{center}
@@ -708,6 +809,7 @@
 			Alle Subnetze eines Netzes funktionieren unabhängig voneinander und die Datenvermittlung läuft schneller. Warum ist das so? Subnetting macht das Netzwerk überschaubarer. Ein Broadcast, bei dem ein Teilnehmer Daten an das gesamte Netz sendet, verläuft ohne Ordnung durch Subnetze relativ unkontrolliert.\vspace{.2cm}\\
 			Durch Subnets werden Datenpakete durch den Router viel gezielter an die Empfänger geleitet. Beﬁnden sich Sender und Empfänger im gleichen Subnetz, können die Informationen direkt zugestellt und müssen nicht umgeleitet werden.
 		
+		\newpage
 		\subsection{Die IP Adresse}
 			Bei dem Netzwerkprotokoll IPv4 (heute aktuell: IPv6) besteht eine IP-Adresse aus 32 Bit. Diese sind in vier Abschnitte mit je einem Oktett aufgeteilt.\\
 			Beispiel IP Adresse:
