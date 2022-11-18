@@ -91,7 +91,7 @@
 			Diese Schicht bildet die Schnittstelle zum Anwender (User). Beispiel hierfür sind:\newline
 			FTP File Transfer Protocol, SMTP Simple Mail Transfer Protocol, SNMP Simple Network Management Protocol und DNS Domain Name Service
 	
-	\newpage
+			\newpage
 	\section{MAC-Adresse}
 		Um Informationen im Ether / Internet zuverlässig und zielgenau verschicken zu können, muss jedes Endgerät im Netz seine eigene individuelle Kennung besitzen!\newline $\longrightarrow$ \emph{MAC Adresse}\newline Die MAC Adresse ist in den ROM der Network Interface Card eines jeden Gerätes eingebrannt. Die MAC ist also keine virtuelle Softwarekennung, sondern eine durchaus physisch mit dem Gerät verbundene Kennnummer. Die MAC-Adresse gehört zur OSI Schicht 2 und besteht aus 48bit welche in 4 Teile eingeteilt werden:
 		\begin{center}
@@ -157,7 +157,10 @@
 			\item[Kanal-Bandbreite: ] Die Kanalbandbreite eines drahtlosen Signals bestimmt die Datenrate dieses Signals. Je höher die Kanalbandbreite, desto schneller ist die Verbindung. Die Verwendung einer Kanalbandbreite von160 MHz ist eines der Hauptmerkmale des neuen WLAN-Standards Wi-Fi 6.
 			\item[Kanal-Dynamic: ] \textcolor{red}{Keine Ahnung? Wenn jemand weiß $\rightarrow$ bei Robin melden}
 		\end{description}
-		
+
+		\subsection{NEXT - Near End Crosstalk}
+		Beim Nahnebensprechen (Near End Crosstalk, NEXT) stört ein Sender einen benachbarten Empfänger. Der NEXT-Pegel ist der Signalpegel, der bei einer Signalübertragung über ein Adernpaar in einem benachbarten Adernpaar durch Induktion auftritt. Je schwächer dieses induzierte Signal ist, desto weniger Störungen gibt es.
+
 		\subsection{Alien-Crosstalk}
 			Alien Crosstalk (AXT) ist elektromagnetisches Rauschen, das in signalführenden Kabeln vorkommt, die parallel zu einem oder mehreren anderen Kabeln verlaufen.
 
@@ -190,8 +193,8 @@
 
 		\subsection{Switch}
 			\subsubsection{Spanning Tree}
-				Switche haben Hierarchie beim Weiterleiten von Paketen. Kleine Priorität ist besser. Falls Priorität gleich, entscheidet höhere MAC-Adresse die bevorzugte Switch\\
-				Switche geben Pakete nur an Switche mit geringerer Priorität oder höherer MAC-Adresse weiter. Beste Switch in der Vernetzung wird zum Root.\\
+				Switche haben eine Hierarchie beim Weiterleiten von Paketen. Kleine Priorität ist besser. Falls Priorität gleich, entscheidet die MAC-Adresse über den bevorzugte Switch. Hierbei ist ebenfalls der Switch mit der geringsten MAC-Adresse der Root Switch.\\
+				Switche geben Pakete nur an Switche mit geringerer Priorität und niedrigerer MAC-Adresse weiter. Beste Switch in der Vernetzung wird zum Root.\\
 				Es gibt dabei 3 Arten von Ports an den Switches:
 				\begin{description}
 					\item[Root-Port] Zur Root-Switch
@@ -533,8 +536,12 @@
 						\hline
 					\end{tabularx}
 			\end{center}
-		
-		\newpage
+
+		\subsubsection{HSRP und VRRP}
+		Wenn, um die Verfügbarkeit eines Netzwerkes zu steigern, zwei Router verwendet werden, muss das Protokoll HSRP oder VRRP verwendet werden. \\
+		HSRP funktioniert mithilfe einem dritten virtuellen Default-Gateway und MAC-Adresse. Diese vergibt dann möglichst effizient die Packete and den Router mit höherer Priorität.\\
+		VRRP ist das Akronym für Virtual Router Redundancy Protocol. Es handelt sich dabei um ein Internet-Protokoll, womit sich ein oder mehrere Backup-Router betreiben lassen, wenn Sie einen statisch konfigurierten Router in einem LAN (Local Area Network) einsetzen. Somit dient der zweite Router nur als Backup, falls der erste ausfällt oder \textit{nicht mehr klar kommt}.
+
 		\subsection{Round Trip Delay Time - RTDT}
 			Die Paketumlaufzeit bzw. Round Trip Time gibt die Zeit an, die ein Datenpaket in einem Rechnernetz benötigt, um von der weitesten entfernten Quelle zum Ziel und zurück zu reisen. Es handelt sich also um die Summe aus Laufzeit von Punkt A nach Punkt B und der Laufzeit von Punkt B nach Punkt A.
 				\begin{center}
@@ -725,13 +732,13 @@
 			\end{center}
 			Das sendende System vergleicht ständig das gesendete Signal mit dem Signal auf der Leitung. Kommt es zu Abweichungen bricht das System die Übertragung ab und sendet ein Jam-Signal welches andere Systeme im Netz über die Kollision informiert. Alle Systeme unterbrechen die Übertragung.\newline
 			Ab wann dürfen die einzelnen Systeme wieder anfangen Daten zu senden?\newline\newline
-			Jedes Signal auf der Leitung braucht eine bestimmte Zeit, um zwischen den beiden entferntesten Systemen im Netz einmal hin, und wieder zurück zu laufen. Diese Zeit wird mit RTT bezeichnet. Ist die RTT abgelaufen, befinden sich keine Signale mehr im Netz, es kann neu gesendet werden. \newline\newline
-			Nach dem Ethernet-Standard 802.3 ist die RTT auf 51,2 Mikrosekunden festgelegt.\newline\newline
-			Kommt es nach dem Warten der RTT dennoch zu einer weiteren Kollision, variieren die Systeme ihre Wartezeit indem sie ein vielfaches der RTT warten. Als Vielfaches können die Faktoren 0,1,2 und 3 gewählt werden.\newline
+			Jedes Signal auf der Leitung braucht eine bestimmte Zeit, um zwischen den beiden entferntesten Systemen im Netz einmal hin, und wieder zurück zu laufen. Diese Zeit wird mit RTDT bezeichnet. Ist die RTDT abgelaufen, befinden sich keine Signale mehr im Netz, es kann neu gesendet werden. \newline\newline
+			Nach dem Ethernet-Standard 802.3 ist die RTDT auf 51,2 Mikrosekunden festgelegt.\newline\newline
+			Kommt es nach dem Warten der RTDT dennoch zu einer weiteren Kollision, variieren die Systeme ihre Wartezeit indem sie ein vielfaches der RTDT warten. Als Vielfaches können die Faktoren 0,1,2 und 3 gewählt werden.\newline
 			$\longrightarrow$ Es wird unterschiedlich lang gewartet. \newline\newline
 			Kommt es erneut zu einer Kollision, wird der Bereich der Vorfaktoren von 0 bis 7 erweitert.
 			\begin{center}
-				Wartezeit= k $\cdot$ RTD
+				Wartezeit= k $\cdot$ RTDT
 			\end{center}
 			\begin{center}
 				k = 0 bis $2^{i}$-1 \hspace{2cm} i = Anzahl Versuche
@@ -788,23 +795,33 @@
 					\draw(17,0.5)--(17,0);
 					\node at (10,-0.5){Min: 64Byte - Max: 1518Byte};
 				\end{scope}
-			\end{tikzpicture}\newline\newline\newline
+			\end{tikzpicture}
 			Unterschreitet der Anteil der Nutzdaten 46Byte, wird durch Padding aufgefüllt.
-		
-		\newpage
 		
 		\section{ARP-Protokoll}
 			Programmablaufplan des ARP Verfahrens:
 			\begin{center}
 				\includegraphics[scale=0.3]{Bilder/ARP-Protokoll PAP.png}
 			\end{center}
+
+		\section{DHCP}
+		DHCP ist das Protokoll zur Vergabe der IP-Adressen an Router. Die meisten privat genutzten Router sind an einen DHCP Server gebunden der Ihnen jeden Tag eine neue IP-Adresse vergibt. 
+
+		\section{DNS - Domain Name System}
+		DNS verwandelt URL's in IP-Adressen. Es funktioniert wie eine risige Tabelle in welches die URL's mit zugehöriger IP-Adresse gespeichert sind.
+
+		\section{ICMP}
+		Das Internet Control Message Protocol (ICMP) dient in Rechnernetzwerken dem Austausch von Informations- und Fehlermeldungen über das Internet-Protokoll in der Version 4 (IPv4). Für IPv6 existiert ein ähnliches Protokoll mit dem Namen ICMPv6.\\
+		ICMP ist Bestandteil von IPv4, wird aber wie ein eigenständiges Protokoll behandelt. Es wird von jedem Router und jedem Rechner erwartet, dass sie ICMP „verstehen“. Die meisten ICMP-Pakete enthalten Diagnose-Informationen: Sie werden vom Router zur Quelle zurückgeschickt, wenn der Router Pakete verwirft, etwa weil beispielsweise das Ziel nicht erreichbar ist oder die TTL abgelaufen ist.
+
+		\section{VLANs}
+		VLANs (Virtual Local Area Networks) unterteilen ein bestehendes einzelnes physisches Netzwerk in mehrere logische Netzwerke. Jedes VLAN bildet dabei eine eigene Broadcast-Domain. Eine Kommunikation zwischen zwei unterschiedlichen VLANs ist nur über einen Router möglich, der an beide VLANs angeschlossen ist.
 		
 		\section{Subnetting}
 			Subnetting ermöglicht es Netzwerkadministratoren beispielsweise, das eigene Firmennetzwerk in Subnetze aufzuteilen, ohne dies im Internet bekannt zu machen. Das heißt, der Router, der schließlich das Netzwerk mit dem Internet verbindet, wird weiterhin als einfache Adresse angegeben.\vspace{.2cm}\\
 			Alle Subnetze eines Netzes funktionieren unabhängig voneinander und die Datenvermittlung läuft schneller. Warum ist das so? Subnetting macht das Netzwerk überschaubarer. Ein Broadcast, bei dem ein Teilnehmer Daten an das gesamte Netz sendet, verläuft ohne Ordnung durch Subnetze relativ unkontrolliert.\vspace{.2cm}\\
 			Durch Subnets werden Datenpakete durch den Router viel gezielter an die Empfänger geleitet. Beﬁnden sich Sender und Empfänger im gleichen Subnetz, können die Informationen direkt zugestellt und müssen nicht umgeleitet werden.
 		
-		\newpage
 		\subsection{Die IP Adresse}
 			Bei dem Netzwerkprotokoll IPv4 (heute aktuell: IPv6) besteht eine IP-Adresse aus 32 Bit. Diese sind in vier Abschnitte mit je einem Oktett aufgeteilt.\\
 			Beispiel IP Adresse:
@@ -833,8 +850,8 @@
 		\subsection{Subnetzmaske}
 			Um ein bestehendes Computernetz zur besseren Übersicht und Verwaltung in mehrere kleine Netze aufteilen zu können, bedarf es einer Subnetzmaske. Diese gibt den Netzwerkbereich einer IP Adresse an. Mit Hilfe der Subnetzmaske kann außerdem überprüft werden, ob sich zwei Geräte im gleichen Subnetz befinden oder nicht. Verknüpft man IP Adresse und Subnetzmaske durch eine AND Verknüpfung, erhält man die Netzwerkkennung des Subnetzes, indem sich die IP Adresse befindet. Stimmen die Netzwerkkennungen zweier Systeme überein, befinden sie sich im selben Subnetz.
 		
-		\subsection{CIDAR}
-			Die CIDAR ist eine vereinfachte Schreibweise für die Subnetzmaske. Da eine Subnetzmaske dadurch definiert wird, dass sie in binär Schreibweise eine fortlaufende Kette von gesetzten Bits haben muss, die nicht durch ein nicht gesetztes Bit unterbrochen werden darf, kann man die Schreibweise dahingehend vereinfachen, dass einfach die gesetzten Bits gezählt werden:
+		\subsection{CIDR}
+			Die CIDR ist eine vereinfachte Schreibweise für die Subnetzmaske. Da eine Subnetzmaske dadurch definiert wird, dass sie in binär Schreibweise eine fortlaufende Kette von gesetzten Bits haben muss, die nicht durch ein nicht gesetztes Bit unterbrochen werden darf, kann man die Schreibweise dahingehend vereinfachen, dass einfach die gesetzten Bits gezählt werden:
 			\begin{center}
 				\footnotesize
 				\renewcommand{\arraystretch}{1.5}
@@ -843,15 +860,15 @@
 					\hline
 					1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&1&\textcolor{red}1&0&0&0&0&0&0&0&0&0&0&0&0&0&0&0 \\
 				\end{tabularx}\\
-				In diesem Falle wäre die CIDAR /17
+				In diesem Falle wäre die CIDR /17
 			\end{center}
 		
-		\subsection{VLSM}
+		\subsection{VLSM bzw. Supernetting}
 			VLSM ist ein erweitertes Subnetting. Hierzu wird die Subnetmaske in eine variable Länge gebracht um das Subnetz in mehrere verschieden große Teile zu unterteilen und sie hierarchisch nach ihrer Größe sortiert. Somit ist es möglich, Subnetze mit einer jeweils verschiedenen Anzahl an Hosts zu erschaffen, ohne dass dafür eine große Menge an IP-Adressen verschwendet werden muss.\vspace{.3cm}\newline
 		\begin{minipage}[t]{.45\textwidth}
 			Aufgabenstellung:
 			\vspace{.2cm}\newline
-			Es wird ein neues Gebäude gebaut. Dafür steht der IP-Bereich 11.137.4.0 /23 zur Verfügung. Die ersten 2 von den 6 Etagen sollen jeweils 100 IP-Adressen haben und die restlichen 4 jeweils 50 IP-Adressen. Gib die IP-Range jeder Etage an!
+			Es wird ein neues Gebäude gebaut. Dafür steht der IP-Bereich 11.137.4.0 /23 zur Verfügung. Die ersten 2 von den 6 Etagen sollen jeweils 100 IP-Adressen haben und die restlichen 4 jeweils 50 IP-Adressen. Gib die IP-Range jeder Etage ohne die jeweiligen Default Gateway- und Broadcast-Adressen an!
 		\end{minipage}
 		\hspace{1cm}
 		\begin{minipage}[t]{.45\textwidth}
@@ -877,13 +894,19 @@
 		\end{minipage}
 		
 		\newpage
-		
 		\subsection{DMZ - Demilitarisierte Zone}
 			Eine Demilitarisierte Zone bezeichnet ein Computernetz mit sicherheitstechnisch kontrollierten Zugriffsmöglichkeiten auf die daran angeschlossenen Server. Die in der DMZ aufgestellten Systeme werden durch eine oder mehrere Firewalls gegen andere Netze abgeschirmt.
 			\begin{center}
 				\includegraphics[scale=0.9]{Bilder/DMZ.PNG}
 			\end{center}
-		
+	
+	\section{IPv6}
+		IPv6 ist die Fortsetzung von IPv4. Grund für die Einführung war, dass IPv4 zu wenige IP-Adressen vergeben konnte. Bei IPv6 sind die Adressen 128 bit lang und somit mehr als ausreichend. Bei IPv6 gibt es keine Checksumme mehr, da diese sowieso durch CRC schon kontrolliert wird. Ebenso können Packete nichtmehr fragmentiert werden und müssen beim Versenden schon in der richtigen Größe gewählt werden. \\
+		IPv6 Adressen besitzen einen Scope. Der Scope Link Local zum Beispiel stellt den Bereich von der Adresse bis zum Router dar, wobei der Scope Global Unique den gesamten Bereich bis zum externen Server/Host (mit Internet) darstellt. Außerdem gibt es keine Broadcast-Adressen mehr! Hierzu gibt es allerdings einen Ersatz. In IPv6 sind All-0 = All Zeros und All-1 = All Ones zunächst zulässige Werte für Adressen. Die vollständige All-0 und All-1 über alle Felder sind nach wie vor ungültig! \\
+		Eine unspezifizierte IPv6 Adresse sieht folgendermaßen aus:\newline
+		:: bzw. ::/128
+
+		\newpage
 		\subsection{IPv6 und IPv4 im Vergleich}
 			Vorteile und Nachteile von IPv6 zu IPv4:
 			\begin{table}[h]
@@ -907,7 +930,14 @@
 					\hline
 				\end{tabularx}
 			\end{table}   
+
+		\subsection{IPv4 Adresse im IPv6 Format}
+		\includegraphics[width=\textwidth]{Bilder/v4-in-v6.PNG}
+
+		\subsection{IPv6: EUI-64-MAC-Adressen}
+		\includegraphics[width=\textwidth]{Bilder/ipv6-mac.PNG}
 			
+		\newpage
 	\section{Codierung}
 		\subsection{Huffmann-Codierung}
 			Algorithmus zum \textbf{Komprimieren} von Dateien.\\
